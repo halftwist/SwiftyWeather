@@ -25,17 +25,37 @@ struct WeatherView: View {
                     
                     Text(getWeatherDescription(for: weatherVM.weatherCode))
                         .font(.largeTitle)
+                        .foregroundStyle(.white) // makes Images & Text white
                     
                     Text("\(Int(weatherVM.temperature))°F") // degree is Shift/Option/8
                         .font(.system(size: 150))
                         .fontWeight(.thin)
+                        .foregroundStyle(.white) // makes Images & Text white
                     
                     Text("Wind \(Int(weatherVM.windspeed))mph - Feels Like \(Int(weatherVM.feelsLike))°F")
                         .font(.title2)
                         .padding(.bottom)
+                        .foregroundStyle(.white) // makes Images & Text white
                     
+                    List(0..<weatherVM.dailyWeatherCode.count, id: \.self) { index in
+                        HStack (alignment: .top){
+                            Image(systemName: getWeatherIcon(for: weatherVM.dailyWeatherCode[index]))
+                            Text(getWeekDay(value: index+1))
+                            
+                            Spacer()
+                            
+                            Text("\(Int(weatherVM.dailyLowTemp[index]))°F")
+                            Text("\(Int(weatherVM.dailyHighTemp[index]))°F")
+                                .font(.title)
+                                .bold()
+                        }
+                        .font(.title2)
+                        .foregroundStyle(.white)
+                        .listRowBackground(Color.clear)
+                    }
+                    .listStyle(.plain)
                 }
-                .foregroundStyle(.white) // makes Images & Text white
+//                .foregroundStyle(.white) // makes Images & Text white
                 
                 .toolbar {  // within the NavigationStack
                     ToolbarItem(placement: .topBarTrailing) {
@@ -61,6 +81,19 @@ struct WeatherView: View {
 }
 
 extension WeatherView {
+    
+    func getWeekDay(value: Int) -> String {
+        // Increase date by "value" days
+        let date = Calendar.current.date(byAdding: .day, value: value, to: Date.now)!
+        // Find the day number 1 = Sunday... 7 = Saturday
+        let dayNumber = Calendar.current.component(.weekday, from: date)
+        // Convert dayNumber to the weekday & return that String
+        let weekday = Calendar.current.weekdaySymbols[value - 1] // remember array is zero indexed, and we got dayNumber 1-7
+        print("dayNumber: \(dayNumber) - weekday: \(weekday)")
+        
+        return weekday
+    }
+    
     // to select a range click on first item then SHIFT click on last item
     func getWeatherDescription(for code: Int) -> String {
         switch code {

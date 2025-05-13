@@ -49,7 +49,7 @@ class WeatherViewModel {
     var weatherCode = 0
     
     var date: [String] = []
-    var dailyWeather_code: [Int] = []
+    var dailyWeatherCode: [Int] = []
     var dailyHighTemp: [Double] = []
     var dailyLowTemp: [Double] = []
 
@@ -77,9 +77,13 @@ class WeatherViewModel {
             windspeed = Returned.current.wind_speed_10m
             weatherCode = Returned.current.weather_code
             date = Returned.daily.time
-            dailyWeather_code = Returned.daily.weather_code
+            dailyWeatherCode = Returned.daily.weather_code
             dailyHighTemp = Returned.daily.temperature_2m_max
             dailyLowTemp = Returned.daily.temperature_2m_min
+            print(date)
+            print(dailyWeatherCode)
+            print(dailyHighTemp)
+            print(dailyLowTemp)
 
 
         } catch {
