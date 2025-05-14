@@ -13,6 +13,7 @@
 		DD8844632DD3C74200160BB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD88445A2DD3C74200160BB3 /* Assets.xcassets */; };
 		DD8844662DD3C76100160BB3 /* UnitSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8844652DD3C76100160BB3 /* UnitSystem.swift */; };
 		DD8844682DD3C85E00160BB3 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8844672DD3C85E00160BB3 /* PreferenceView.swift */; };
+		DD88446A2DD4CD8B00160BB3 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8844692DD4CD8B00160BB3 /* Preference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DD88445E2DD3C74200160BB3 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		DD8844652DD3C76100160BB3 /* UnitSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSystem.swift; sourceTree = "<group>"; };
 		DD8844672DD3C85E00160BB3 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
+		DD8844692DD4CD8B00160BB3 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +61,11 @@
 				DD88445A2DD3C74200160BB3 /* Assets.xcassets */,
 				DD88445B2DD3C74200160BB3 /* Info.plist */,
 				DD88445C2DD3C74200160BB3 /* SwiftyWeatherApp.swift */,
+				DD88445E2DD3C74200160BB3 /* WeatherViewModel.swift */,
 				DD8844652DD3C76100160BB3 /* UnitSystem.swift */,
+				DD8844692DD4CD8B00160BB3 /* Preference.swift */,
 				DD88445D2DD3C74200160BB3 /* WeatherView.swift */,
 				DD8844672DD3C85E00160BB3 /* PreferenceView.swift */,
-				DD88445E2DD3C74200160BB3 /* WeatherViewModel.swift */,
 			);
 			path = SwiftyWeather;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				DD8844602DD3C74200160BB3 /* SwiftyWeatherApp.swift in Sources */,
 				DD8844682DD3C85E00160BB3 /* PreferenceView.swift in Sources */,
 				DD8844612DD3C74200160BB3 /* WeatherView.swift in Sources */,
+				DD88446A2DD4CD8B00160BB3 /* Preference.swift in Sources */,
 				DD8844622DD3C74200160BB3 /* WeatherViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
