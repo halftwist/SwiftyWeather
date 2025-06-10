@@ -57,7 +57,7 @@ class WeatherViewModel {
     var urlString = "https://api.open-meteo.com/v1/forecast?latitude=40.749275&longitude=-73.970088&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&hourly=uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto"
     
     func getData() async {
-        print("🕸️  We are accessing URL:\(urlString)")
+        print("\(#function) 🕸️  We are accessing URL:\(urlString)")
         guard let url = URL(string: urlString) else {
 //            fatalError("Invalid URL")
             print("😡  ERROR: Could not create a url from \(urlString)")

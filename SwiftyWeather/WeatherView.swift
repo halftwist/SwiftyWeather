@@ -37,6 +37,7 @@ struct WeatherView: View {
                         .scaledToFit()
                         .padding(.horizontal)
                         .symbolRenderingMode(.multicolor)
+//                        .symbolRenderingMode(.hierarchical)
                     
                     Text(getWeatherDescription(for: weatherVM.weatherCode))
                         .font(.largeTitle)
@@ -55,6 +56,7 @@ struct WeatherView: View {
                     List(0..<weatherVM.dailyWeatherCode.count, id: \.self) { index in
                         HStack (alignment: .top){
                             Image(systemName: getWeatherIcon(for: weatherVM.dailyWeatherCode[index]))
+                                .symbolRenderingMode(.multicolor)
                             Text(getWeekDay(value: index+1))
                             
                             Spacer()
@@ -108,12 +110,12 @@ struct WeatherView: View {
 extension WeatherView {
     
     func callWeatherAPI() async {
-//        print("Calling weather API...")
+        print("Calling weather API...")
         if !preferences.isEmpty {
             preference = preferences.first!
             weatherVM.urlString = "https://api.open-meteo.com/v1/forecast?latitude=\(preference.latString)&longitude=\(preference.longString)&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&hourly=uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&temperature_unit=\(preference.selectedUnit == .metric ? "celsius" : "fahrenheit")&wind_speed_unit=\(preference.selectedUnit == .metric ? "kmh" : "mph")&precipitation_unit=inch&timezone=auto"
         }
-        print(weatherVM.urlString)
+        print("\(#function)", weatherVM.urlString)
         await weatherVM.getData()
 
     }
@@ -125,11 +127,16 @@ extension WeatherView {
         let dayNumber = Calendar.current.component(.weekday, from: date)
         // Convert dayNumber to the weekday & return that String
         let weekday = Calendar.current.weekdaySymbols[dayNumber - 1] // remember array is zero indexed, and we got dayNumber 1-7
-        print("date: \(date) dayNumber: \(dayNumber) - weekday: \(weekday)")
+        print("\(#function) date: \(date) dayNumber: \(dayNumber) - weekday: \(weekday)")
         
         return weekday
     }
     
+    func mySwiftUIFunction() {
+        print("This function is called: \(#function)")
+    }
+
+
     // to select a range click on first item then SHIFT click on last item
     func getWeatherDescription(for code: Int) -> String {
         switch code {
@@ -339,6 +346,7 @@ extension WeatherView {
     }
     
     func getWeatherIcon(for code: Int) -> String {
+        print("\(#function) getWeatherIcon code: \(code)")
         switch code {
         case 0:
             return "cloud.sun.fill" // Clear sky
